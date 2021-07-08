@@ -1,26 +1,23 @@
 class Solution:
     def threeSum(self, nums):
-        nums2 = sorted(nums)
-        mem = dict()
-        for x in nums2:
-            y = str(x)
-            if (y not in mem.keys()):
-                mem[y] = 1
-            else:
-                mem[y]+= 1
+        nums.sort() # O(n log n)
         result = set()
-        for i in range(len(nums2)):
-            first = nums2[i]
-            for j in range(i+1, len(nums2)):
-                second = nums2[j]
-                query = 0 - first - second
-                key = str(query)
-                if (key in mem.keys()):
-                    check = True
-                    if (first == query and second == query):
-                        check = mem[key] > 2
-                    elif (first == query or second == query):
-                        check = mem[key] > 1
-                    if check:    
-                        result.add(tuple(sorted([first, second, query])))
+        n = len(nums)
+        for i in range(n): # O(n^2)
+            hi = n - 1
+            lo = i + 1
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+
+            while (lo < hi):
+                total = nums[i] + nums[lo] + nums[hi]
+                if (total == 0):
+                    result.add(tuple(sorted([nums[i], nums[lo], nums[hi]])))
+                    hi-= 1
+                    lo+= 1
+                elif total > 0:
+                    hi-= 1
+                else:
+                    lo+= 1
+                
         return result
