@@ -22,10 +22,6 @@ public class Solution {
         String s = sum.toString();
         ListNode result = new ListNode();
 
-        System.out.println(x1.toString());
-        System.out.println(x2.toString());
-        System.out.println(s);
-
         ListNode curResult = result;
         for (int i = s.length() - 1; i >= 0; i--) {
             curResult.val = Integer.parseInt(String.valueOf(s.charAt(i)));
