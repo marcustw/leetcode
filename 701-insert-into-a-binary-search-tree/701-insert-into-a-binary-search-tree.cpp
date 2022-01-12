@@ -12,21 +12,9 @@
 class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
-        TreeNode* newNode = new TreeNode(val);
-        if (root == NULL) return newNode;
-        if (val > root->val) {
-            if (root->right == NULL) {
-                root->right = newNode;
-            } else {
-                insertIntoBST(root->right, val);
-            }
-        } else {
-            if (root->left == NULL) {
-                root->left = newNode;
-            } else {
-                insertIntoBST(root->left, val);
-            }
-        }
+        if(root == NULL) return new TreeNode(val);
+        if (val > root->val) root->right = insertIntoBST(root->right, val);
+        else root->left = insertIntoBST(root->left, val);
         return root;
     }
 };
