@@ -6,8 +6,8 @@ public:
             res.push_back(s);
             return;
         }
-        backtrack(open-1, close, s+"(", res);
-        backtrack(open, close-1, s+")", res);
+        backtrack(open-1, close, s+'(', res);
+        backtrack(open, close-1, s+')', res);
     }
     
     vector<string> generateParenthesis(int n) {
