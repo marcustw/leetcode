@@ -3,9 +3,9 @@
 class Solution {
 public:
     void helper(vector<vector<int>>& res, vector<int>& nums, int index, vector<int> subset) {
-        if (index <= nums.size()) {
-            res.push_back(subset);
-        }
+        
+        res.push_back(subset);
+        
         for (int i = index; i < nums.size(); i++) {
             subset.push_back(nums[i]);
             helper(res, nums, i+1, subset);
