@@ -10,14 +10,18 @@
 
 class Solution {
 public:
-    //Follow up: Could you solve the problem if repeated values on the tree are allowed?
+    void dfs(TreeNode* original, TreeNode* cloned, TreeNode* target, TreeNode*& ans) {
+        if (original == NULL) return;
+        if (original == target) {
+            ans = cloned;
+        }
+        dfs(original->left, cloned->left, target, ans);
+        dfs(original->right, cloned->right, target, ans);
+    }
+    
     TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
-        if (original == NULL) return NULL;
-        else if (original == target) return cloned;
-        
-        TreeNode* leftResult = getTargetCopy(original->left, cloned->left, target);
-        TreeNode* rightResult = getTargetCopy(original->right, cloned->right, target);
-        
-        return leftResult == NULL ? rightResult : leftResult;
+        TreeNode* ans = nullptr;
+        dfs(original, cloned, target, ans);
+        return ans;
     }
 };
