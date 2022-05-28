@@ -14,15 +14,15 @@ public:
         
     };
     
-    MinStack::Node* cur=NULL;
+    Node* cur=NULL;
     
     MinStack() {}
     
     void push(int val) {
         if (cur==NULL) {
-            cur= new MinStack::Node(val, val, NULL);
+            cur= new Node(val, val, NULL);
         } else {
-            cur= new MinStack::Node(val, min(cur->minVal, val), cur);
+            cur= new Node(val, min(cur->minVal, val), cur);
         }
     }
     
