@@ -1,7 +1,6 @@
 class Solution {
 private:
     vector<vector<int>> ans;
-    unordered_set<string> s;
     
     void permutate(vector<int>& arr, int l, int r) {
         if (l==r) {
