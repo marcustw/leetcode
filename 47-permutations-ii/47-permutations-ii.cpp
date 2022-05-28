@@ -10,7 +10,7 @@ private:
         }
         unordered_set<int> uset;
         for (int i=l; i<=r; i++) {
-            if (uset.count(arr[i]) == 1) continue;
+            if (uset.count(arr[i]) > 0) continue;
             uset.insert(arr[i]);
             swap(arr[i], arr[l]);
             permutate(arr,l+1,r);
