@@ -7,7 +7,6 @@ public:
             ans^=i;
             ans^=nums[i];
         }
-        ans^=n;
-        return ans;
+        return ans^n;
     }
 };
