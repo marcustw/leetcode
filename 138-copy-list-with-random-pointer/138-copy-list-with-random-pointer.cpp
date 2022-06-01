@@ -17,6 +17,7 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
+        if (head==NULL) return head;
         //originalListNode points to newListNode
         unordered_map<Node*,Node*> nodes;
         Node* cur=head;
