@@ -6,11 +6,8 @@ public:
         while (l<=r) {
             int i=(l+r)/2;
             if (nums[i]==target) return i;
-            else if (nums[i]>target) {
-                r=i-1;
-            } else {
-                l=i+1;
-            }
+            else if (nums[i]>target) r=i-1;
+            else l=i+1;
         }
         return -1;
     }
