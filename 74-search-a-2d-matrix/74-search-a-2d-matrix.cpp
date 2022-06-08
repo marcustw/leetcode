@@ -6,7 +6,7 @@ public:
         int lo=0, hi=m*n-1;
         while (lo<hi){
             int mid=(lo+hi)/2;
-            if (matrix[mid/m][mid%m] < target)
+            if (matrix[mid/m][mid%m]<target)
                 lo=mid+1;
             else 
                 hi=mid;
