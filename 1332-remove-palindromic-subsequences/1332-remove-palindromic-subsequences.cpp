@@ -1,11 +1,11 @@
 class Solution {
 private:
-    int isPalindrome(string& s) {
+    bool isPalindrome(string& s) {
         int n=s.size();
         for (int i=0; i<n/2; i++) {
-            if (s[i]!=s[n-i-1]) return 1;
+            if (s[i]!=s[n-i-1]) return false;
         }
-        return 0;
+        return true;
     }
 public:
     /*
@@ -16,6 +16,6 @@ public:
         - If s is not palindrome, remove all 'a' as palindromic subsequence, then remove all 'b'
     */
     int removePalindromeSub(string s) {
-        return 1+isPalindrome(s);
+        return isPalindrome(s) ? 1 : 2;
     }
 };
