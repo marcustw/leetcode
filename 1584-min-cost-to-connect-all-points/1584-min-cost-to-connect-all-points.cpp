@@ -1,24 +1,19 @@
 class Solution {
 public:
-    int minCostConnectPoints(vector<vector<int>>& points) {
-        //mst
-        int n=points.size();
-        int ans=0, i=0, v=0;
-        priority_queue<pair<int,int>> pq;
-        vector<bool> visited(n);
-        while(++v<n) {
-            visited[i]=true;
-            for (int j=0; j<n; j++) {
-                if (!visited[j]) {
-                    int manhattan_dist = abs(points[i][0]-points[j][0]) + abs(points[i][1]-points[j][1]);
-                    pq.push({-manhattan_dist,j}); //negate dist so smallest dist pops first
+    int minCostConnectPoints(vector<vector<int>>& ps) {
+        int n = ps.size(), res = 0, i = 0, connected = 0;
+        vector<int> min_d(n, 10000000);
+        while (++connected < n) {
+            min_d[i] = INT_MAX;
+            int min_j = i;
+            for (int j = 0; j < n; ++j)
+                if (min_d[j] != INT_MAX) {
+                    min_d[j] = min(min_d[j], abs(ps[i][0] - ps[j][0]) + abs(ps[i][1] - ps[j][1]));
+                    min_j = min_d[j] < min_d[min_j] ? j : min_j;
                 }
-            }
-            while (visited[pq.top().second]) pq.pop();
-            ans+=(-pq.top().first);
-            i=pq.top().second;
-            pq.pop();
+            res += min_d[min_j];
+            i = min_j;
         }
-        return ans;
+        return res;
     }
 };
