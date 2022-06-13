@@ -6,6 +6,7 @@ public:
         dp[n]=true;
         for (int i=n-1; i>=0; i--) {
             for (auto w : wordDict) {
+                //if you are able to form a string w from index i of string s, set dp[i]=dp[i+w.length()]
                 if (i+w.length() <= s.length() && s.substr(i,w.length())==w)
                     dp[i]=dp[i+w.length()];
                 if (dp[i]) break;
