@@ -11,7 +11,7 @@ public:
         unordered_map<string,int> m;
         
         // initialise dp
-        for (string word : words) m[word]=1;
+        for (auto& word : words) m[word]=1;
         
         int ans=0;
         
