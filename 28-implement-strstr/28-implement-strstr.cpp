@@ -8,7 +8,6 @@ public:
         while (i+n<=m) {
             if (haystack.substr(i,n)==needle) return i;
             else i++;
-            
             while (i+n<=m && haystack[i]!=needle[0]) i++;
         }
         return -1;
