@@ -20,8 +20,14 @@ public:
         vs.insert(vs.begin(),0); vs.push_back(w);
         long long maxH=0;
         long long maxW=0;
-        for (int i=0; i<hs.size()-1; i++) maxH=max((long long)hs[i+1]-(long long)hs[i],maxH);
-        for (int j=0; j<vs.size()-1; j++) maxW=max((long long)vs[j+1]-(long long)vs[j],maxW);
+        for (int i=0; i<hs.size()-1; i++) {
+            long long l=hs[i+1]-hs[i];
+            maxH=max(l,maxH);
+        }
+        for (int j=0; j<vs.size()-1; j++) {
+            long long b=vs[j+1]-vs[j];
+            maxW=max(b,maxW);
+        }
         return (int) moduloMultiplication(maxH,maxW,mod);
     }
 };
