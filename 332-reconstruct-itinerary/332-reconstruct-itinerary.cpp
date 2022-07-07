@@ -9,12 +9,12 @@ class Solution {
             edges[airport].pop();
             recurse(next); // explore smaller neighbour first
         }
-        ans.insert(ans.begin(),airport);
+        ans.push_back(airport);
     }
 public:
     vector<string> findItinerary(vector<vector<string>>& tickets) {
         for (auto ticket : tickets) edges[ticket[0]].push(ticket[1]);
         recurse("JFK"); // "JFK" is starting
-        return ans;
+        return vector<string>(ans.rbegin(),ans.rend());
     }
 };
