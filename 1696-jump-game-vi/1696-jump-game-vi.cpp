@@ -3,7 +3,7 @@ class Solution {
 public:
     int maxResult(vector<int>& nums, int k) {
         int n=nums.size();
-        vector<int> dp(n, INT_MIN);
+        vector<int> dp(n);
         dp[0]=nums[0];
         deque<int> q{0};
         for (int i=1; i<n; i++) {
