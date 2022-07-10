@@ -1,24 +1,22 @@
 class Solution {
-    vector<bool> visited;
-    vector<bool> can;
+    vector<int> can;
     
     bool recurse(vector<int>& arr, int i) {
         if (i<0 || i>=arr.size()) return false;
-        else if (visited[i]) return can[i];
+        else if (can[i]) return can[i]==2;
         else if (arr[i]==0) {
-            visited[i]=true;
-            can[i]=true;
+            can[i]=2;
             return true;
         }
-        visited[i] = true;
-        can[i] = recurse(arr, i-arr[i]) || recurse(arr, i+arr[i]);
-        return can[i];
+        can[i]=1;
+        bool canReachZero = recurse(arr, i-arr[i]) || recurse(arr, i+arr[i]);
+        if (canReachZero) can[i]++;
+        return can[i]==2;
     }
 public:
     bool canReach(vector<int>& arr, int start) {
         if (arr[start]==0) return true;
-        visited=vector<bool>(arr.size(), false);
-        can=vector<bool>(arr.size(), false);
+        can=vector<int>(arr.size(), 0);
         return recurse(arr, start);
     }
 };
