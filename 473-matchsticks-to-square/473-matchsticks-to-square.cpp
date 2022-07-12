@@ -1,5 +1,5 @@
 class Solution {
-    bool recurse(const vector<int> &matches, vector<int> &square, int index, const int k) {
+    bool recurse(vector<int> &matches, vector<int> &square, int index, int k) {
         if (index==matches.size())
             return square[0]==square[1] && square[1]==square[2] && square[2]==square[3];
         for (int i=0; i<4; i++) {
