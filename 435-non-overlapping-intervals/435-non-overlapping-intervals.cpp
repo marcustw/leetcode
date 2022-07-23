@@ -6,7 +6,7 @@ public:
              [](const vector<int>& first, vector<int>& second) {
                  return first[1]<second[1];
              });
-        int start=intervals[0][0], end=intervals[0][1];
+        int end=intervals[0][1];
         for (int i=1; i<intervals.size(); i++) {
             if (end>intervals[i][0]) ans++;
             else end=intervals[i][1];
