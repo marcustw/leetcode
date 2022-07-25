@@ -16,11 +16,11 @@ public:
         ListNode* fast = head;
         ListNode* pre;
         //Let fast pointer take a n-1 node lead in the beginning
-        for(int i=1;i<=n-1;i++){
+        for(int i=1; i<=n-1; i++){
            fast = fast->next;
         }
         //Now, let both slow and fast travel forward until fast->next == NULL
-        while(fast->next !=NULL ){
+        while(fast->next!=NULL){
            pre = slow;
            slow = slow->next;
            fast = fast->next;
