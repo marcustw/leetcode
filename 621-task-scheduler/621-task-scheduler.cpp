@@ -14,6 +14,6 @@ public:
         for (auto it=m.begin(); it!=m.end(); it++) {
             if (it->second==maxFreq) ans++;
         }
-        return size>ans ? size : ans;
+        return max(size,ans);
     }
 };
