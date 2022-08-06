@@ -18,10 +18,11 @@ public:
 
 class Solution {
     Node* find(Node* root) {
-        while (root->next) {
-            root=root->next;
-            if (root->left) return root->left;
-            if (root->right) return root->right;
+        Node* cur=root;
+        while (cur->next) {
+            cur=cur->next;
+            if (cur->left) return cur->left;
+            if (cur->right) return cur->right;
         }
         return NULL;
     }
