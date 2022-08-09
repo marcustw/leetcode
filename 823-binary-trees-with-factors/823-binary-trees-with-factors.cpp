@@ -6,6 +6,8 @@ public:
         int n=arr.size();
         long ans=0;
         unordered_map<int,long> m;
+        // a, b, c are in arr, and a = b * c
+        // numOfTrees(a) = 1 + (numOfTrees(b) * numOfTrees(c))
         for (int i=0; i<n; i++) {
             int a = arr[i];
             m[a] = 1;
