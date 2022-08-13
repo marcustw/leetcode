@@ -12,20 +12,17 @@ public:
         for (int i=0; i<numCourses; i++) {
             if (!inDegree[i]) q.push(i);
         }
-        
+        int num=0;
         while (!q.empty()) {
             int u=q.front();
             q.pop();
+            num++;
             for (auto& v : graph[u]) {
                 inDegree[v]--;
                 if (!inDegree[v]) q.push(v);
             }
         }
         
-        for (int i=0; i<numCourses; i++) {
-            if (inDegree[i]) return false;
-        }
-        
-        return true;
+        return num==numCourses;
     }
 };
