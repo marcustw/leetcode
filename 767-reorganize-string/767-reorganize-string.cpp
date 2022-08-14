@@ -8,17 +8,19 @@ public:
             counts[c-'a']++;
             maxFreq=max(maxFreq,counts[c-'a']);
         }
-        priority_queue<pair<int,char>> pq;
-        for (int i=0; i<26; i++) {
-            pq.push({counts[i],i+'a'});
-        }
+        unordered_set<int> maxChars;
         vector<string> strs(maxFreq,"");
         int q=0;
-        while (!pq.empty()) {
-            pair<int,char> p=pq.top();
-            pq.pop();
-            for (int i=0; i<p.first; i++) {
-                strs[q++]+=p.second;
+        for (int i=0; i<26; i++) {
+            if (counts[i]==maxFreq) {
+                maxChars.insert(i);
+                for (int j=0; j<maxFreq; j++) strs[j]+=(i+'a');
+            }
+        }
+        for (int i=0; i<26; i++) {
+            if (maxChars.count(i)) continue;
+            for (int j=0; j<counts[i]; j++) {
+                strs[q++]+=(i+'a');
                 if (q==maxFreq) q=0;
             }
         }
