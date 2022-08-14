@@ -19,7 +19,7 @@ public:
             pq.pop();
             for (int i=0; i<p.first; i++) {
                 strs[q++]+=p.second;
-                q%=maxFreq;
+                if (q==maxFreq) q=0;
             }
         }
         string ans=strs[0];
