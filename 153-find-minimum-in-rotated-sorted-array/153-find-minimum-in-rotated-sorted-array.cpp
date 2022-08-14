@@ -7,10 +7,10 @@ public:
             if (nums[lo]<nums[hi]) break;
             int mid=(lo+hi)/2;
             
-            if (nums[lo]>nums[mid]) {
-                hi=mid;
-            } else {
+            if (nums[mid]>=nums[lo]) {
                 lo=mid+1;
+            } else {
+                hi=mid;
             }
         }
         
