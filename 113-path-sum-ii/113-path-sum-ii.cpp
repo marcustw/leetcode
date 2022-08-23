@@ -12,18 +12,18 @@
 class Solution {
     vector<vector<int>> ans;
     
-    void recurse(TreeNode* node, int targetSum, int sum, vector<int> path) {
+    void recurse(TreeNode* node, int targetSum, int sum, vector<int>& path) {
         if (!node) return;
         sum += node->val;
         path.push_back(node->val);
         if (!node->left && !node->right) {
             if (targetSum == sum)
                 ans.push_back(path);
-            return;
         } else {
             recurse(node->left, targetSum, sum, path);
             recurse(node->right, targetSum, sum, path);
         }
+        path.pop_back();
     }
 public:
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
