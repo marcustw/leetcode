@@ -16,13 +16,10 @@ class Solution {
         if (!node) return;
         sum += node->val;
         path.push_back(node->val);
-        if (!node->left && !node->right) {
-            if (targetSum == sum)
-                ans.push_back(path);
-        } else {
-            recurse(node->left, targetSum, sum, path);
-            recurse(node->right, targetSum, sum, path);
-        }
+        if (!node->left && !node->right && targetSum == sum)
+            ans.push_back(path);
+        recurse(node->left, targetSum, sum, path);
+        recurse(node->right, targetSum, sum, path);
         path.pop_back();
     }
 public:
