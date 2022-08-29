@@ -8,13 +8,17 @@ public:
             if (nums[lo] == nums[m] && nums[hi] == nums[m]) {
                 lo++;
                 hi--;
-            } else if (nums[lo] <= nums[m]) {
+            }
+            // left partition in order
+            else if (nums[lo] <= nums[m]) {
                 if (nums[lo] <= target && nums[m] > target) {
                     hi = m-1;
                 } else {
                     lo = m+1;
                 }
-            } else {
+            }
+            // right partition half in order
+            else {
                 if (nums[m] < target && nums[hi] >= target) {
                     lo = m+1;
                 } else {
