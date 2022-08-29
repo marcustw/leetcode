@@ -1,6 +1,8 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-       return accumulate(nums.begin(), nums.end(), 0, bit_xor<int>());
+        int sum = 0;
+        for (int n : nums) sum ^= n;
+        return sum;
     }
 };
