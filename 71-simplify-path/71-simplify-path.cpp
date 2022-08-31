@@ -1,11 +1,10 @@
 class Solution {
 public:
     string simplifyPath(string path) {
-        stack<string> stek;
         string ans;
-        
+        stack<string> stek;
         for(int i=0;  i<path.length(); i++) {
-            if(path[i] == '/')    
+            if (path[i] == '/')    
                 continue;
             string temp;
             while(i < path.length() && path[i] != '/') {
