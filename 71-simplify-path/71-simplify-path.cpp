@@ -12,15 +12,15 @@ public:
                 temp += path[i];
                 i++;
             }
-            if(temp == ".")
+            if (temp == ".")
                 continue;
             else if(temp == "..") {
-                if(!stek.empty()) stek.pop();
+                if(stek.size()) stek.pop();
             }
             else
                 stek.push(temp);
         }
-        while(!stek.empty()) {
+        while(stek.size()) {
             ans = "/" + stek.top() + ans;
             stek.pop();
         }
