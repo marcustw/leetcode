@@ -21,9 +21,7 @@ class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
         if (root == NULL) return ans;
-        recurse(root->left);
-        ans.push_back(root->val);
-        recurse(root->right);
+        recurse(root);
         return ans;
     }
 };
