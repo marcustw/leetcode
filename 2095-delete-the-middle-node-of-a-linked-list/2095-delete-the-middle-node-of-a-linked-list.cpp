@@ -20,7 +20,7 @@ public:
         ListNode* jump = head;
         ListNode* temp = head;
         while (jump && jump->next) {
-            if (cur!=head) temp = temp->next;
+            temp = cur;
             cur = cur->next;
             jump = jump->next->next;
         }
