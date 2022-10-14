@@ -21,8 +21,10 @@ public:
         ListNode* prev = cur;
         while (cur) {
             if (cur->val == val) {
+                ListNode* temp = cur;
                 cur = cur->next;
                 prev->next = cur;
+                delete temp;
             } else {
                 prev = cur;
                 cur = cur->next; 
