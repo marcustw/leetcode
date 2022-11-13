@@ -12,14 +12,14 @@
 class Solution {
     int height(TreeNode* node, int h) {
         if (node == NULL) return h;
-        return max(height(node->left, h+1), height(node->right, h+1));
+        int left = height(node->left, h+1);
+        int right = height(node->right, h+1);
+        if (left == -1 || right == -1 || abs(left-right) > 1) return -1;
+        return max(left, right);
     } 
 public:
     bool isBalanced(TreeNode* root) {
         if (root == NULL) return true;
-        if (abs(height(root->left, 0) - height(root->right, 0)) > 1) {
-            return false;
-        }
-        return isBalanced(root->left) && isBalanced(root->right);
+        return height(root, 0) != -1;
     }
 };
