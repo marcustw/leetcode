@@ -9,12 +9,12 @@ public:
                 long diff = (long) nums[i] - nums[j];
                 int count;
                 if (dp[j].find(diff) != dp[j].end()) {
-                    count = dp[j][diff];
+                    int count = dp[j][diff];
+                    dp[i][diff] += (count+1);
+                    ans += count;
                 } else {
-                    count = 0;
+                    dp[i][diff] += 1;
                 }
-                dp[i][diff] += (count+1);
-                ans += count;
             }
         }
         return ans;
