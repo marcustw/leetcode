@@ -10,10 +10,8 @@ public:
             }
         }
         for (auto& p : losses) {
-            if (p.second == 0) {
-                ans[0].push_back(p.first);
-            } else if (p.second == 1) {
-                ans[1].push_back(p.first);
+            if (p.second <= 1) {
+                ans[p.second].push_back(p.first);
             }
         }
         sort(ans[0].begin(), ans[0].end());
