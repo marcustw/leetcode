@@ -11,7 +11,7 @@ public:
         }
         for (char& c : word2) {
             m2[c-'a']++;
-            m4[c-'a']=1;
+            m3[c-'a']=0;
         }
         sort(m1.begin(), m1.end());
         sort(m2.begin(), m2.end());
