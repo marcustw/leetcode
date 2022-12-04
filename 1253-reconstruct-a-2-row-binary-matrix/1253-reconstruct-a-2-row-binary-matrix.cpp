@@ -24,7 +24,6 @@ public:
                 }
             }
         }
-        cout << "U = " << U << ", L = " << L << endl;
         if (U != 0 || L != 0) return vector<vector<int>>();
         return {c1, c2};
 
