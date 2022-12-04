@@ -5,7 +5,6 @@ public:
         vector<int> c1(N, 0);
         vector<int> c2(N, 0);
         for (int i=0; i<N; i++) {
-            if (C[i] == 0) continue;
             if (C[i] == 2) {
                 c1[i] = 1;
                 c2[i] = 1;
