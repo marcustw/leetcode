@@ -16,11 +16,14 @@ public:
                 palindrome[i] = 'b';
             }
         }
+        
+        // handle if palindrome is all 'a'
         unordered_set<char> s(palindrome.begin(), palindrome.end());
         if (s.size() == 1) {
             palindrome[replaced]=replacedChar;
             palindrome[n-1]='b';
         }
+        
         return palindrome;
     }
 };
