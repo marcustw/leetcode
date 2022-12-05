@@ -3,11 +3,8 @@ public:
     string breakPalindrome(string palindrome) {
         int n = palindrome.length();
         if (n==1) return "";
-        int replaced=-1;
-        char replacedChar;
-        bool nonA=false;
         for (int i=0; i<n/2; i++) {
-            if (palindrome[i] != 'a' && replaced==-1) {
+            if (palindrome[i] != 'a') {
                 palindrome[i] = 'a';
                 return palindrome;
             }
