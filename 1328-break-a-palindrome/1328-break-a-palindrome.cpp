@@ -3,23 +3,23 @@ public:
     string breakPalindrome(string palindrome) {
         int n = palindrome.length();
         if (n==1) return "";
-        int replaced;
+        int replaced=-1;
         char replacedChar;
+        bool nonA=false;
         for (int i=0; i<n; i++) {
-            if (palindrome[i] != 'a') {
+            if (palindrome[i] != 'a' && replaced==-1) {
                 replacedChar = palindrome[i];
                 palindrome[i] = 'a';
                 replaced = i;
-                break;
             }
-            if (i == n-1) {
+            if (palindrome[i] != 'a') {
+                nonA=true;
+            }
+            if (i == n-1 && replaced==-1) {
                 palindrome[i] = 'b';
             }
         }
-        
-        // handle if palindrome is all 'a'
-        unordered_set<char> s(palindrome.begin(), palindrome.end());
-        if (s.size() == 1) {
+        if (!nonA && replaced!=-1) {
             palindrome[replaced]=replacedChar;
             palindrome[n-1]='b';
         }
