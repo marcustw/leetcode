@@ -17,8 +17,10 @@ public:
             }
             if (i == n-1 && replaced==-1) {
                 palindrome[i] = 'b';
+                return palindrome;
             }
         }
+        // checks for all 'a' after replacement
         if (!nonA && replaced!=-1) {
             palindrome[replaced]=replacedChar;
             palindrome[n-1]='b';
