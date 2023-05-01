@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="CheckStyle-IDEA-Module">
+    <option name="configuration">
+      <map />
+    </option>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/2048" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/4 Thought" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Different" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Backspace" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/P" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/WA2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PA2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LCS" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/WeightedEventScheduling" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CarplateChecksum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/NearestPalindromic" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/3D Printed Status" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Shopee" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Sum2ListNode" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ShopeeInterview" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Computhink" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/VirtueTrading" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Aaah" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/JPMorgan" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Google" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Card Trading" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
