@@ -10,14 +10,15 @@
  * };
  */
 class Solution {
-    bool isValidBST(TreeNode* node, TreeNode* minNode, TreeNode* maxNode) {
+    bool isValidBST(TreeNode* node, long left, long right) {
         if (!node) return true;
-        if (minNode && node->val <= minNode->val || maxNode && node->val >= maxNode->val) return false;
-        return isValidBST(node->left, minNode, node) && isValidBST(node->right, node, maxNode);
+        if (node->val <= left || node->val >= right) return false;
+        return isValidBST(node->left, left, node->val) && isValidBST(node->right, node->val, right);
     }
 
 public:
     bool isValidBST(TreeNode* root) {
-        return isValidBST(root, NULL, NULL);
+        if (!root || (!root->left && !root->right)) return true;
+        return isValidBST(root, LONG_MIN, LONG_MAX);
     }
 };
