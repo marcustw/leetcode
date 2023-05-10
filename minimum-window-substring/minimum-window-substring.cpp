@@ -13,9 +13,8 @@ class Solution {
 public:
     string minWindow(string s, string t) {
         if (s==t) return s;
-        int m=s.length(), n=t.length(), lo=0, hi=0;
-        string ans="";
-        if (m<n) return ans;
+        int m=s.length(), n=t.length(), lo=0, hi=0, len=-1, i;
+        if (m<n) return "";
         vector<int> mt(52,0), ms(52,0);
         for (const char &c : t) mt[index(c)]++;
         while (hi<m) {
@@ -29,11 +28,13 @@ public:
                         break;
                     }
                 }
-                if (ans=="" || ans.length()>hi-lo)
-                    ans=s.substr(lo, hi-lo);
+                if (len==-1 || len>hi-lo) {
+                    i=lo;
+                    len=hi-lo;
+                }
                 ms[index(s[lo++])]--;
             }
         }
-        return ans;
+        return len==-1 ? "" : s.substr(i, len);
     }
 };
