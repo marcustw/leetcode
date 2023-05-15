@@ -9,30 +9,18 @@
  * };
  */
 
-struct Node {
-    ListNode* cur; // next = cur->next
-    Node* prev;
-
-    Node(ListNode* cur): cur(cur), prev(nullptr) {} 
-};
-
 class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k) {
-        ListNode* cur = head;
-        Node* front = new Node(cur);
-        Node* rear = front;
-        while (rear->cur) {
-            Node* newRear = new Node(rear->cur->next);
-            newRear->prev = rear;
-            rear = newRear;
+        ListNode* cur = head, *cur2 = head, *kth = nullptr;
+        while (--k) cur=cur->next;
+        kth=cur;
+        cur=cur->next;
+        while (cur) {
+            cur=cur->next;
+            cur2=cur2->next;
         }
-        rear = rear->prev;
-        while (k-->1) {
-            cur = cur->next;
-            rear = rear->prev;
-        }
-        swap(cur->val, rear->cur->val);
+        swap(cur2->val, kth->val);
         return head;
     }
 };
