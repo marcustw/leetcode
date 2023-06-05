@@ -1,21 +1,35 @@
 class Solution {
-    void dfs(int i, vector<vector<int>>& graph, vector<bool>& visited) {
-        visited[i] = true;
-        for (int j = 0; j < visited.size(); j++) {
-            if (i != j && graph[i][j] && !visited[j]) {
-                dfs(j, graph, visited);
-            }
+    vector<int> v;
+
+    int find(int x) {
+        if (v[x]!=x) {
+            v[x] = find(v[x]);
+        }
+        return v[x];
+    }
+
+    void join(int x, int y) {
+        int fx=find(x), fy=find(y);
+        if (fx!=fy) {
+            v[fy]=fx;
         }
     }
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
         if (isConnected.empty()) return 0;
         int n=isConnected.size();
-        vector<bool> visited(n, false);
-        int ans=0;
-        for (int i=0; i<visited.size(); i++) {
-            ans += !visited[i] ? dfs(i, isConnected, visited), 1 : 0;
+        v=vector<int>(n);
+        iota(v.begin(), v.end(), 0);
+        for (int i=0; i<n; i++) {
+            for (int j=0; j<n; j++) {
+                if (i!=j && isConnected[i][j]) {
+                    join(i, j);
+                }
+            }
         }
-        return ans;
+        for (int i=0; i<n; i++) {
+            if (find(i) != v[i]) v[i]=find(i);
+        }
+        return unordered_set<int>(v.begin(), v.end()).size();
     }
 };
