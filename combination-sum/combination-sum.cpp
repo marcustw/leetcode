@@ -9,9 +9,7 @@ class Solution {
             ans.push_back(path);
             return;
         }
-        if (newSum<target) {
-            recurse(candidates, path, target, newSum, i);
-        }
+        if (newSum<target) recurse(candidates, path, target, newSum, i);
         path.pop_back();
         recurse(candidates, path, target, curSum, i+1);
     }
