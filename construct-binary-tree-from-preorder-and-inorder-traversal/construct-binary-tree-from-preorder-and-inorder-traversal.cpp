@@ -26,12 +26,10 @@ public:
 
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         int n=preorder.size();
-        for (int i=0; i<n; ++i) {
-            m[inorder[i]] = i;
-        }
+        for (int i=0; i<n; ++i) m[inorder[i]] = i;
         return buildTree(preorder, inorder, 0, n-1, 0, n-1);
     }
 };
 
-// preorder = [3,9,10,11,20,15,7]
-// inorder = [10,9,11,3,15,20,7]
+// preorder = [root, ..leftSubtree, ..rightSubtree]
+// inorder = [..leftSubtree, root, ..rightSubtree]
