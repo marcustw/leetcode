@@ -10,27 +10,13 @@
  * };
  */
 class Solution {
+    int ans=INT_MAX, val=-1;
 public:
     int getMinimumDifference(TreeNode* root) {
-        int ans=INT_MAX;
-        priority_queue<int> pq;
-        stack<TreeNode*> st;
-        st.push(root);
-        while (!st.empty()) {
-            TreeNode* node=st.top();
-            st.pop();
-            pq.push(node->val);
-            if (node->right)
-                st.push(node->right);
-            if (node->left)
-                st.push(node->left);
-        }
-        int cur=pq.top(); pq.pop();
-        while (!pq.empty()) {
-            if (abs(pq.top()-cur)<ans) ans=abs(pq.top()-cur);
-            cur=pq.top();
-            pq.pop();
-        }
+        if (root->left) getMinimumDifference(root->left);
+        if (val>=0) ans=min(ans, root->val-val);
+        val=root->val;
+        if (root->right) getMinimumDifference(root->right);
         return ans;
     }
 };
