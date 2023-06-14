@@ -10,13 +10,24 @@
  * };
  */
 class Solution {
-    int ans=INT_MAX, val=-1;
 public:
-    int getMinimumDifference(TreeNode* root) {
-        if (root->left) getMinimumDifference(root->left);
-        if (val>=0) ans=min(ans, root->val-val);
-        val=root->val;
-        if (root->right) getMinimumDifference(root->right);
+    // binary search tree -> sorted order
+    // minDiff definitely comes from abs(parent->val - child->val)
+    int getMinimumDifference(TreeNode* root) {      
+        // iterative
+        int ans=INT_MAX, val=-1;
+        stack<TreeNode*> stek;
+        while (root || !stek.empty()) {
+            while (root) {
+                stek.push(root);
+                root=root->left;
+            }
+            root=stek.top();
+            stek.pop();
+            if (val>=0) ans=min(ans, root->val-val);
+            val=root->val;
+            root=root->right;
+        }
         return ans;
     }
 };
