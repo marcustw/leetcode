@@ -5,8 +5,8 @@ public:
     
     // return number of requests in the past 3000 milliseconds
     int ping(int t) {
-        while (!q.empty() && q.front()<t-3000) q.pop();
         q.push(t);
+        while (q.front()<t-3000) q.pop();
         return q.size();
     }
 };
