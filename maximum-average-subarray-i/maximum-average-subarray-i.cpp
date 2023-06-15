@@ -9,11 +9,11 @@ public:
                 cur--;
             }
             if (cur==0) {
-                ans=max(ans, total);
+                ans=max(ans, total/k);
                 total-=nums[lo++];
                 cur++;
             }
         }
-        return ans/k;
+        return ans;
     }
 };
