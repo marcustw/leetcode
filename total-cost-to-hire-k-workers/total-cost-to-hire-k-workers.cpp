@@ -10,11 +10,9 @@ public:
             while (pq2.size()<candidates && lo<=hi) pq2.push(costs[hi--]);
             if (!pq1.empty() && (pq2.empty() || pq1.top() <= pq2.top())) {
                 ans+=pq1.top();
-                cout << "add pq1: " << pq1.top() << endl;
                 pq1.pop();
             } else {
                 ans+=pq2.top();
-                cout << "add pq2: " << pq2.top() << endl;
                 pq2.pop();
             }
             k--;
