@@ -7,16 +7,23 @@ class Solution {
     };
 public:
     vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
-        int i=0, j=0, n=nums1.size(), m=nums2.size();
+        int n=nums1.size(), m=nums2.size();
         vector<vector<int>> ans;
-        priority_queue<vector<int>, vector<vector<int>>, Comparator> pq;
-        for (int i=0; i<n && i<k; ++i) pq.push({nums1[i], nums2[0], 0});
-        while (k-- && !pq.empty()) {
-            auto p=pq.top(); pq.pop();
-            ans.push_back({p[0], p[1]});
-            if (p[2]==m-1) continue;
-            pq.push({p[0], nums2[p[2]+1], p[2]+1});
+        priority_queue<vector<int>> pq;
+        for (int i=0; i<n; ++i) {
+            for (int j=0; j<m; ++j) {
+                int sum=nums1[i]+nums2[j];
+                if (pq.size()<k) pq.push({sum, nums1[i], nums2[j]});
+                else if (sum<pq.top()[0]) {
+                    pq.pop();
+                    pq.push({sum, nums1[i], nums2[j]});
+                } else break;
+            }
         }
-        return ans;
+        while (!pq.empty()) {
+            auto p=pq.top(); pq.pop();
+            ans.push_back({p[1], p[2]});
+        }
+        return vector<vector<int>>(ans.rbegin(), ans.rend());
     }
 };
