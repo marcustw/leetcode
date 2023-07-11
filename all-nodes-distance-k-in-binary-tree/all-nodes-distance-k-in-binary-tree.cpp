@@ -8,41 +8,41 @@
  * };
  */
 class Solution {
+    unordered_map<int, int> m;
     vector<int> ans;
 
-    int dfs(TreeNode* node, TreeNode* target, int k, int depth) {
-        if (!node) return 0;
-        if (depth==k) {
-            ans.push_back(node->val);
+
+    int find(TreeNode* root, TreeNode* target) {
+        if (!root) return -1;
+        if (root==target) {
+            m[root->val]=0;
             return 0;
         }
-        int left, right;
-        if (node->val == target->val || depth>0) {
-            left = dfs(node->left, target, k, depth+1);
-            right = dfs(node->right, target, k, depth+1);
-        } else {
-            left = dfs(node->left, target, k, depth);
-            right = dfs(node->right, target, k, depth);
-        }
-        if (node->val==target->val) return 1;
-        if (left==k || right==k) {
-            ans.push_back(node->val);
-            return 0;
-        }
-        if (left>0) {
-            dfs(node->right, target, k, left+1);
+        int left=find(root->left, target);
+        if (left>=0) {
+            m[root->val]=left+1;
             return left+1;
         }
-        if (right>0) {
-            dfs(node->left, target, k, right+1);
+        int right=find(root->right, target);
+        if (right>=0) {
+            m[root->val]=right+1;
             return right+1;
         }
-        return 0;
+        return -1;
     }
+
+    void dfs(TreeNode* root, TreeNode* target, int k, int len) {
+        if (!root) return;
+        if (m.find(root->val) != m.end()) len=m[root->val];
+        if (len==k) ans.push_back(root->val);
+        dfs(root->left, target, k, len+1);
+        dfs(root->right, target, k, len+1);
+    }
+
 public:
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
-        if (k==0) ans.push_back(target->val);
-        else dfs(root, target, k, 0);
+        find(root, target);
+        dfs(root, target, k, m[root->val]);
         return ans;
     }
 };
