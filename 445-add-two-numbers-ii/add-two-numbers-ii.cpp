@@ -16,23 +16,11 @@ public:
         while (l1) s1.push(l1), l1=l1->next;
         while (l2) s2.push(l2), l2=l2->next;
         int carry=0;
-        while (!s1.empty() && !s2.empty()) {
-            ListNode *a=s1.top(), *b=s2.top(); s1.pop(); s2.pop();
-            int c=a->val+b->val+carry;
-            carry=c/10; c%=10;
-            ans = new ListNode(c, ans);
-        }
-        while (!s1.empty()) {
-            ListNode* a=s1.top(); s1.pop();
-            int c=a->val+carry;
-            carry=c/10; c%=10;
-            ans = new ListNode(c, ans);
-        }
-        while (!s2.empty()) {
-            ListNode* a=s2.top(); s2.pop();
-            int c=a->val+carry;
-            carry=c/10; c%=10;
-            ans = new ListNode(c, ans);
+        while (!s1.empty() || !s2.empty()) {
+            if (!s1.empty()) carry+=s1.top()->val, s1.pop();
+            if (!s2.empty()) carry+=s2.top()->val, s2.pop();
+            ans = new ListNode(carry%10, ans);
+            carry/=10;
         }
         if (carry!=0) {
             ans = new ListNode(carry, ans);
