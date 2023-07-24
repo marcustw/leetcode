@@ -1,13 +1,13 @@
 class Solution {
 public:
     string greatestLetter(string s) {
-        unordered_set<char> sed;
-        char ans='\0';
-        for (const char& c : s)
-            if (islower(c)) sed.insert(c);
-        for (const char& c : s)
-            if (isupper(c) && sed.find(tolower(c))!=sed.end())
-                ans=max(ans, c);
-        return ans=='\0' ? "" : string(1, ans);
+        int cnt[52]={};
+        for (auto& c : s) {
+            ++cnt[isupper(c) ? c-'A' : c-'a' + 26];
+        }
+        for (char c='Z'; c>='A'; --c)
+            if (cnt[c-'A'] && cnt[c-'A'+26]) return string(1, c);
+
+        return "";
     }
 };
